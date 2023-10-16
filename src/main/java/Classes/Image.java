@@ -1,13 +1,14 @@
 package Classes;
 
-public class Image {
+public class Image implements Element{
     public String imageName;
 
    public Image(String imageName){
         this.imageName = imageName;
     }
 
-    public void print(){
-        System.out.println("Image with name: " + this.imageName);
+    @Override
+    public String print(){
+        return "Image with name: " + this.imageName;
     }
 }
