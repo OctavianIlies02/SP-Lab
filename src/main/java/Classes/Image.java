@@ -1,15 +1,15 @@
 package Classes;
 
-public class Image implements Element{
-    public String imageName;
+import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
-   public Image(String imageName){
-        this.imageName = imageName;
-    }
+public class Image extends Element implements Picture{
+    public String imageName;
+    public String url;
 
     @Override
     public void print(){
-        System.out.println("Image with name: " + this.imageName);
+        System.out.println("Image with name: " + this.url);
     }
 
     @Override
@@ -25,5 +25,32 @@ public class Image implements Element{
     @Override
     public Element get(int index) {
         return null;
+    }
+
+    @Override
+    public String url() {
+        return url;
+    }
+
+    @Override
+    public Dimension dim() {
+        return null;
+    }
+
+    public Image(String url){
+       this.url = url;
+       try{
+           TimeUnit.SECONDS.sleep(5);
+       } catch (InterruptedException e){
+           e.printStackTrace();
+       }
+    }
+
+    public Image (Image i){
+        url = i.url;
+    }
+
+    public Element clone(){
+        return new Image(this);
     }
 }

@@ -3,7 +3,7 @@ package Classes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Paragraph implements Element{
+public class Paragraph extends Element{
     private String text;
     private List<Element> elements;
 

@@ -2,7 +2,7 @@ package Classes;
 
 import java.util.List;
 
-public class TableOfContents implements Element{
+public class TableOfContents extends Element{
 
     private List<Element> elements;
     public void print(){
