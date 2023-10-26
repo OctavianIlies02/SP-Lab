@@ -3,17 +3,21 @@ package Classes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Paragraph implements Element{
-    private String text;
-    private List<Element> elements;
+public class Section implements Element{
 
-    public Paragraph(String text) {
-        this.text = text;
+    protected String title;
+    protected List<Element> elements;
+
+    public Section(String title){
+        this.title = title;
+        elements = new ArrayList<>();
     }
 
     @Override
-    public void print(){
-        System.out.println("Paragraph: " + this.text);
+    public void print() {
+        System.out.println(title);
+        for (Element e: elements)
+            e.print();
     }
 
     @Override

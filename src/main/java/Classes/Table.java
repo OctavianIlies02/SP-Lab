@@ -8,7 +8,22 @@ public class Table implements Element{
     }
 
     @Override
-    public String print(){
-        return "Table with title: " + this.title;
+    public void print(){
+        System.out.println("Table with title: " + this.title);
+    }
+
+    @Override
+    public void add(Element e) {
+
+    }
+
+    @Override
+    public void remove(Element e) {
+
+    }
+
+    @Override
+    public Element get(int index) {
+        return null;
     }
 }
