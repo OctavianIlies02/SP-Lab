@@ -6,15 +6,13 @@ import java.util.List;
 public class Paragraph extends Element{
     private String text;
     private List<Element> elements;
+    private AlignStrategy alignStrategy;
 
     public Paragraph(String text) {
         this.text = text;
+        elements = new ArrayList<>();
     }
 
-    @Override
-    public void print(){
-        System.out.println("Paragraph: " + this.text);
-    }
 
     @Override
     public void add(Element e) {
@@ -30,4 +28,24 @@ public class Paragraph extends Element{
     public Element get(int index) {
         return elements.get(index);
     }
+
+    public void setAlignStrategy(AlignStrategy alignStrategy) {
+        this.alignStrategy = alignStrategy;
+    }
+
+
+
+    @Override
+    public void print() {
+        if (alignStrategy != null) {
+            alignStrategy.render("Paragraph: " + this.text); // Render the text with alignment
+        } else {
+            System.out.println("Paragraph: " + this.text);
+        }
+
+        for (Element element : elements) {
+            element.print();
+        }
+    }
+
 }
