@@ -1,9 +1,9 @@
-package Classes;
+package com.example.designpatternslab2023.models;
 
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-public class Image extends Element implements Picture{
+public class Image extends Element implements Picture {
     public String imageName;
     public String url;
 

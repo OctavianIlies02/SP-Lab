@@ -1,9 +1,11 @@
-package Classes;
+package com.example.designpatternslab2023.models;
+
+import com.example.designpatternslab2023.models.Element;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Section extends Element{
+public class Section extends Element {
 
     protected String title;
     protected List<Element> elements;

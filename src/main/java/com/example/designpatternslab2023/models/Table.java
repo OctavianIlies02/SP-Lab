@@ -1,6 +1,8 @@
-package Classes;
+package com.example.designpatternslab2023.models;
 
-public class Table extends Element{
+import com.example.designpatternslab2023.models.Element;
+
+public class Table extends Element {
     private String title;
 
     public Table(String title){

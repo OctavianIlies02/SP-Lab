@@ -1,13 +1,10 @@
-package Classes;
-
-import org.springframework.http.converter.BufferedImageHttpMessageConverter;
-import org.springframework.util.StringUtils;
+package com.example.designpatternslab2023.models;
 
 import java.awt.*;
 
 public class ImageProxy extends Element implements Picture {
 
-    private Image realImage;
+    private com.example.designpatternslab2023.models.Image realImage;
     private String url;
     private Dimension dim;
 
@@ -25,7 +22,7 @@ public class ImageProxy extends Element implements Picture {
         return dim;
     }
 
-    public Image LoadImage(){
+    public com.example.designpatternslab2023.models.Image LoadImage(){
         if(realImage == null)
             realImage = new Image(url);
         return realImage;

@@ -1,9 +1,11 @@
-package Classes;
+package com.example.designpatternslab2023.models;
+
+import com.example.designpatternslab2023.services.AlignStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Paragraph extends Element{
+public class Paragraph extends Element {
     private String text;
     private List<Element> elements;
     private AlignStrategy alignStrategy;

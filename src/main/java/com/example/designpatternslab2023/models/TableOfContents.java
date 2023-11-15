@@ -1,8 +1,10 @@
-package Classes;
+package com.example.designpatternslab2023.models;
+
+import com.example.designpatternslab2023.models.Element;
 
 import java.util.List;
 
-public class TableOfContents extends Element{
+public class TableOfContents extends Element {
 
     private List<Element> elements;
     public void print(){
