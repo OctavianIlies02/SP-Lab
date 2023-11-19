@@ -2,7 +2,7 @@ package com.example.designpatternslab2023.models;
 
 import java.awt.*;
 
-public class ImageProxy extends Element implements Picture {
+public class ImageProxy extends Element implements Picture,Visitee {
 
     private com.example.designpatternslab2023.models.Image realImage;
     private String url;
@@ -22,7 +22,7 @@ public class ImageProxy extends Element implements Picture {
         return dim;
     }
 
-    public com.example.designpatternslab2023.models.Image LoadImage(){
+    public Image LoadImage(){
         if(realImage == null)
             realImage = new Image(url);
         return realImage;
@@ -30,6 +30,12 @@ public class ImageProxy extends Element implements Picture {
 
     public void print(){
         LoadImage().print();
+    }
+
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitImageProxy(this);
     }
 
 

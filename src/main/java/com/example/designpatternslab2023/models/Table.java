@@ -2,8 +2,12 @@ package com.example.designpatternslab2023.models;
 
 import com.example.designpatternslab2023.models.Element;
 
-public class Table extends Element {
+public class Table extends Element implements Visitee{
     private String title;
+
+    public String getTitle() {
+        return title;
+    }
 
     public Table(String title){
         this.title = title;
@@ -27,5 +31,11 @@ public class Table extends Element {
     @Override
     public Element get(int index) {
         return null;
+    }
+
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitTable(this);
     }
 }

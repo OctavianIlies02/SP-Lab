@@ -1,15 +1,15 @@
 package com.example.designpatternslab2023.models;
 
-import com.example.designpatternslab2023.models.Element;
+import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class TableOfContents extends Element {
+public class TableOfContents extends Element implements Visitee {
 
-    private List<Element> elements;
-    public void print(){
-
-    }
+    private List<Element> elements = new ArrayList<>();
+    @Getter
+    private List<String> entries = new ArrayList<>();
 
     @Override
     public void add(Element e) {
@@ -25,4 +25,18 @@ public class TableOfContents extends Element {
     public Element get(int index) {
         return elements.get(index);
     }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitTableOfContents(this);
+    }
+
+    public List<Element> getElements() {
+        return elements;
+    }
+
+    public void addEntry(String entry){
+        entries.add(entry);
+    }
+
 }

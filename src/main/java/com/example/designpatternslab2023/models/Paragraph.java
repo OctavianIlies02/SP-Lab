@@ -5,7 +5,7 @@ import com.example.designpatternslab2023.services.AlignStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Paragraph extends Element {
+public class Paragraph extends Element implements Visitee{
     private String text;
     private List<Element> elements;
     private AlignStrategy alignStrategy;
@@ -14,6 +14,11 @@ public class Paragraph extends Element {
         this.text = text;
         elements = new ArrayList<>();
     }
+
+    public String getText(){
+        return this.text;
+    }
+
 
 
     @Override
@@ -50,4 +55,8 @@ public class Paragraph extends Element {
         }
     }
 
+    @Override
+    public void accept(Visitor visitor) {
+       visitor.visitParagraph(this);
+    }
 }

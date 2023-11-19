@@ -1,6 +1,6 @@
 package com.example.designpatternslab2023.models;
 
-public class Author {
+public class Author implements Visitee{
     private String name;
     private String surname;
 
@@ -14,7 +14,14 @@ public class Author {
         System.out.println("Author: " + name);
     }
 
+    public String getName() {
+        return name;
+    }
 
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitAuthor(this);
+    }
 }
 
 
