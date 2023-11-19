@@ -1,9 +1,12 @@
-package Classes;
+package com.example.designpatternslab2023.models;
+
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book extends Section{
-
+public class Book extends Section implements Visitee{
+    @Getter
     private List<Author> authors;
 
     public Book(String title) {
@@ -30,4 +33,10 @@ public class Book extends Section{
             e.print();
         }
     }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitBook(this);
+    }
+
 }

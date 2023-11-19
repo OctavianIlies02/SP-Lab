@@ -1,4 +1,4 @@
-package Classes;
+package com.example.designpatternslab2023.models;
 
 import java.awt.*;
 

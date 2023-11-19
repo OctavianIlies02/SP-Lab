@@ -1,9 +1,13 @@
-package Classes;
+package com.example.designpatternslab2023.models;
 
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-public class Image extends Element implements Picture{
+public class Image extends Element implements Visitee {
+    public String getImageName() {
+        return imageName;
+    }
+
     public String imageName;
     public String url;
 
@@ -28,14 +32,10 @@ public class Image extends Element implements Picture{
     }
 
     @Override
-    public String url() {
-        return url;
+    public void accept(Visitor visitor) {
+        visitor.visitImage(this);
     }
 
-    @Override
-    public Dimension dim() {
-        return null;
-    }
 
     public Image(String url){
        this.url = url;
