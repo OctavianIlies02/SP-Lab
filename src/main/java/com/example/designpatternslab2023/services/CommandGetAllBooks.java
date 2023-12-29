@@ -1,17 +1,20 @@
 package com.example.designpatternslab2023.services;
 
 import com.example.designpatternslab2023.models.Book;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-public class CommandGetAllBooks implements Command<List<Book>>{
-    private BookServices books;
+@RequiredArgsConstructor
+public class CommandGetAllBooks implements Command {
+    List<Book> result;
 
-    public List<Book> execute() {
-        return books.getBooks();
-    }
-    public CommandGetAllBooks(BookServices contextBooks){
-        this.books=contextBooks;
+    @Override
+    public void execute(CommandContext context) {
+        result = context.getBookRepository().getBooks();
     }
 
+    public List<Book> getResults() {
+        return result;
+    }
 }

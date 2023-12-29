@@ -1,22 +1,13 @@
 package com.example.designpatternslab2023.services;
 
-import com.example.designpatternslab2023.models.Book;
+import lombok.RequiredArgsConstructor;
 
-public class CommandDeleteBook implements Command<Void>{
-    private BookServices books;
-    private Long id;
+@RequiredArgsConstructor
+public class CommandDeleteBook implements Command {
 
-    @Override
-    public Void execute() {
-        books.deleteBook(id);
-        return null;
-    }
+    private final Long id;
 
-    public CommandDeleteBook(BookServices contextBooks) {
-        this.books = contextBooks;
-    }
-
-    public void setAtribute(Long id){
-        this.id = id;
+    public void execute(CommandContext context) {
+        context.getBookRepository().deleteBook(id);
     }
 }

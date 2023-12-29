@@ -1,21 +1,23 @@
 package com.example.designpatternslab2023.services;
 
 import com.example.designpatternslab2023.models.Book;
+import lombok.RequiredArgsConstructor;
 
-public class CommandAddBook implements Command<Book>{
-    private BookServices books;
-    private Book newBook;
+import java.util.Map;
+
+@RequiredArgsConstructor
+public class CommandAddBook implements Command {
+
+    Book result;
+
+    private final Map<String, Object> request;
 
     @Override
-    public Book execute() {
-        return books.createBook(newBook);
+    public void execute(CommandContext context) {
+        result = context.getBookRepository().createBook(new Book((String) request.get("Titlu")));
     }
 
-    public CommandAddBook(BookServices contextbooks){
-        this.books = contextbooks;
-    }
-
-    public void setAtribute(Book newBook){
-        this.newBook = newBook;
+    public Book getResults() {
+        return result;
     }
 }
