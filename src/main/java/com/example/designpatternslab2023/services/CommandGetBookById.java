@@ -1,10 +1,9 @@
 package com.example.designpatternslab2023.services;
 
-import com.example.designpatternslab2023.models.Book;
+import com.example.designpatternslab2023.Entity.Book;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-
 public class CommandGetBookById implements Command {
 
     private final Long id;
@@ -12,7 +11,7 @@ public class CommandGetBookById implements Command {
     Book result = null;
 
     public void execute(CommandContext context) {
-        result = context.getBookRepository().getBookById(id);
+        result = context.getBookRepository().findById(id).get();
     }
 
     public Book getResultBook() {
