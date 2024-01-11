@@ -1,6 +1,6 @@
 package com.example.designpatternslab2023.services;
 
-import com.example.designpatternslab2023.models.Book;
+import com.example.designpatternslab2023.Entity.Book;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -12,7 +12,7 @@ public class CommandUpdateBook implements Command {
 
     @Override
     public void execute(CommandContext context) {
-        result = context.getBookRepository().createBook(book);
+        result = context.getBookRepository().save(book);
     }
 
     public Book getResults() {

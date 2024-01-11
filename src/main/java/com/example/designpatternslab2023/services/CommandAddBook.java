@@ -1,6 +1,6 @@
 package com.example.designpatternslab2023.services;
 
-import com.example.designpatternslab2023.models.Book;
+import com.example.designpatternslab2023.Entity.Book;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Map;
@@ -14,7 +14,8 @@ public class CommandAddBook implements Command {
 
     @Override
     public void execute(CommandContext context) {
-        result = context.getBookRepository().createBook(new Book((String) request.get("Titlu")));
+        Book carte = new Book();
+        result = context.getBookRepository().save(carte);
     }
 
     public Book getResults() {
