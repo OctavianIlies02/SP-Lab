@@ -1,6 +1,6 @@
 package com.example.designpatternslab2023.Controllers;
 
-import com.example.designpatternslab2023.models.Book;
+import com.example.designpatternslab2023.Entity.Book;
 import com.example.designpatternslab2023.services.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +22,8 @@ public class BooksController {
 
     private final SyncExecutor syncExecutor;
 
+    private final AllBooksSubject allBooksSubject;
+
 
     @GetMapping
     public ResponseEntity<?> getAllBooks() {
@@ -38,10 +40,13 @@ public class BooksController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addBook(@RequestBody Map<String, Object> request) {
+    public String addBook(@RequestBody Map<String, Object> request) {
         CommandAddBook cmd = new CommandAddBook(request);
         asyncExecutor.executeCommand(cmd, context);
-        return new ResponseEntity<>(cmd.getResults(), HttpStatus.OK);
+
+        Book book = cmd.getResults();
+        allBooksSubject.notifyObservers(book);
+        return "Book saved [" + book.getId() + "] ";
     }
 
     @PutMapping("/{id}")
